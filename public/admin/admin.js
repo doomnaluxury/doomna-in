@@ -740,7 +740,7 @@ async function handleSaveProduct(e) {
     };
 
     if (isBackend) {
-        await fetch('/api/products', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(prodObj) });
+        await fetch('/api/products', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(prodObj) });
     }
 
     const existingIdx = adminProducts.findIndex(p => p.id === id);
