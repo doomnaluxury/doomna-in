@@ -1,0 +1,339 @@
+{
+  "masterSizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL",
+    "3XL",
+    "4XL"
+  ],
+  "sizeCharts": [
+    {
+      "id": "sc-oversized",
+      "title": "Oversized Fit Size Chart",
+      "category": "Oversized T-Shirts",
+      "rows": [
+        { "size": "XS", "chest": "40\"", "length": "27\"", "shoulder": "20\"", "sleeve": "8\"" },
+        { "size": "S", "chest": "42\"", "length": "28\"", "shoulder": "21\"", "sleeve": "8.5\"" },
+        { "size": "M", "chest": "44\"", "length": "29\"", "shoulder": "22\"", "sleeve": "9\"" },
+        { "size": "L", "chest": "46\"", "length": "30\"", "shoulder": "23\"", "sleeve": "9.5\"" },
+        { "size": "XL", "chest": "48\"", "length": "31\"", "shoulder": "24\"", "sleeve": "10\"" },
+        { "size": "XXL", "chest": "50\"", "length": "32\"", "shoulder": "25\"", "sleeve": "10.5\"" },
+        { "size": "3XL", "chest": "52\"", "length": "33\"", "shoulder": "26\"", "sleeve": "11\"" },
+        { "size": "4XL", "chest": "54\"", "length": "34\"", "shoulder": "27\"", "sleeve": "11.5\"" }
+      ]
+    },
+    {
+      "id": "sc-polo",
+      "title": "Polo Knitted Size Chart",
+      "category": "Polo T-Shirts",
+      "rows": [
+        { "size": "S", "chest": "38\"", "length": "26.5\"", "shoulder": "17.5\"", "sleeve": "7.5\"" },
+        { "size": "M", "chest": "40\"", "length": "27.5\"", "shoulder": "18.5\"", "sleeve": "8\"" },
+        { "size": "L", "chest": "42\"", "length": "28.5\"", "shoulder": "19.5\"", "sleeve": "8.5\"" },
+        { "size": "XL", "chest": "44\"", "length": "29.5\"", "shoulder": "20.5\"", "sleeve": "9\"" },
+        { "size": "XXL", "chest": "46\"", "length: "30.5\"", "shoulder": "21.5\"", "sleeve": "9.5\"" },
+        { "size": "3XL", "chest": "48\"", "length: "31.5\"", "shoulder": "22.5\"", "sleeve": "10\"" }
+      ]
+    },
+    {
+      "id": "sc-coord",
+      "title": "Co-ord Set Size Chart",
+      "category": "Co-ord Sets",
+      "rows": [
+        { "size": "S", "chest": "42\"", "length": "28\"", "shoulder": "21\"", "sleeve": "24\"" },
+        { "size": "M", "chest": "44\"", "length": "29\"", "shoulder": "22\"", "sleeve": "25\"" },
+        { "size": "L", "chest": "46\"", "length": "30\"", "shoulder": "23\"", "sleeve": "26\"" },
+        { "size": "XL", "chest": "48\"", "length": "31\"", "shoulder": "24\"", "sleeve": "27\"" },
+        { "size": "XXL", "chest": "50\"", "length": "32\"", "shoulder": "25\"", "sleeve": "28\"" }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "doom-01",
+      "title": "Cybernetic Oversized Tee",
+      "subtitle": "Signature 280GSM Drop-Shoulder Streetwear",
+      "brand": "Doomna",
+      "sku": "SKU-DM-001",
+      "tags": ["Streetwear", "Oversized", "Heavyweight", "Neon"],
+      "category": "Oversized T-Shirts",
+      "subcategory": "Graphic Streetwear",
+      "price": 4999,
+      "comparePrice": 6999,
+      "stock": 45,
+      "sizes": ["XS", "S", "M", "L", "XL", "XXL", "3XL", "4XL"],
+      "sizeChartId": "sc-oversized",
+      "colors": ["Obsidian Black", "Lime Neon"],
+      "colorVariants": [
+        { "color": "Obsidian Black", "colorHex": "#070707", "swatchImg": "assets/products/oversized_tee_1.jpg", "images": ["assets/products/oversized_tee_1.jpg", "assets/products/oversized_tee_2.jpg"], "stock": 45, "sku": "SKU-DM-001-BLK", "price": 4999 },
+        { "color": "Lime Neon", "colorHex": "#CCFF00", "swatchImg": "assets/products/oversized_tee_2.jpg", "images": ["assets/products/oversized_tee_2.jpg", "assets/products/oversized_tee_1.jpg"], "stock": 20, "sku": "SKU-DM-001-LME", "price": 4999 }
+      ],
+      "fabric": "100% French Terry Organic Cotton",
+      "gsm": "280 GSM Heavyweight",
+      "washCare": "Machine wash cold inside out, lay flat to dry, do not iron on print.",
+      "rating": 4.9,
+      "reviewsCount": 28,
+      "badge": "BESTSELLER",
+      "enabled": true,
+      "images": [
+        "assets/products/oversized_tee_1.jpg",
+        "assets/products/oversized_tee_2.jpg",
+        "assets/products/polo_tee_1.jpg",
+        "assets/products/coord_set_1.jpg",
+        "assets/products/polo_tee_2.jpg"
+      ],
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "shortDescription": "Heavyweight 280GSM French Terry cotton featuring high-density silicone neon print and relaxed drop-shoulder cut.",
+      "longDescription": "<h3>THE ART OF UNAPOLOGETIC STREETWEAR LUXURY</h3><p>Doomna represents the pinnacle of high-street architectural apparel. Designed for individuals who command distinction without saying a word, the Cybernetic Oversized Tee is the culmination of three years of textile innovation, ergonomic tailoring, and relentless pursuit of timeless comfort.</p>",
+      "seoTitle": "Doomna Cybernetic Oversized Tee | Premium Streetwear",
+      "seoDescription": "Shop the Doomna Cybernetic Oversized Tee in 280GSM cotton. Fast shipping across India.",
+      "seoKeywords": "Doomna, Oversized T-Shirt, Streetwear, Heavyweight Cotton, Luxury Apparel"
+    },
+    {
+      "id": "doom-02",
+      "title": "Doomna Neon Monogram Tee",
+      "subtitle": "Vibrant Lime 3D Monogram Collection",
+      "brand": "Doomna",
+      "sku": "SKU-DM-002",
+      "tags": ["Neon", "Monogram", "Oversized"],
+      "category": "Oversized T-Shirts",
+      "subcategory": "Monogram Series",
+      "price": 5499,
+      "comparePrice": 7499,
+      "stock": 20,
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "sizeChartId": "sc-oversized",
+      "colors": ["Lime Neon", "Jet Black"],
+      "colorVariants": [
+        { "color": "Lime Neon", "colorHex": "#CCFF00", "swatchImg": "assets/products/oversized_tee_2.jpg", "images": ["assets/products/oversized_tee_2.jpg", "assets/products/oversized_tee_1.jpg"], "stock": 20, "sku": "SKU-DM-002-LME", "price": 5499 },
+        { "color": "Jet Black", "colorHex": "#070707", "swatchImg": "assets/products/oversized_tee_1.jpg", "images": ["assets/products/oversized_tee_1.jpg", "assets/products/oversized_tee_2.jpg"], "stock": 15, "sku": "SKU-DM-002-BLK", "price": 5499 }
+      ],
+      "fabric": "100% Combed Milled Cotton",
+      "gsm": "300 GSM Heavyweight",
+      "washCare": "Hand wash cold, do not bleach, tumble dry low.",
+      "rating": 4.8,
+      "reviewsCount": 19,
+      "badge": "LIMITED DROP",
+      "enabled": true,
+      "images": [
+        "assets/products/oversized_tee_2.jpg",
+        "assets/products/oversized_tee_1.jpg",
+        "assets/products/coord_set_1.jpg"
+      ],
+      "videoUrl": "",
+      "shortDescription": "Vibrant lime neon signature tee crafted from premium combed organic cotton with 3D embossed logo graphics.",
+      "longDescription": "<h3>VIBRANT NEON MONOGRAM</h3><p>Elevate your high-street silhouette with our signature 3D embossed neon monogram tee.</p>",
+      "seoTitle": "Doomna Neon Monogram Tee",
+      "seoDescription": "Limited drop neon monogram tee by Doomna.",
+      "seoKeywords": "Doomna, Neon Tee, Monogram"
+    },
+    {
+      "id": "doom-03",
+      "title": "Obsidian Jacquard Knitted Polo",
+      "subtitle": "Tailored Jacquard Tipping Luxury Knit",
+      "brand": "Doomna",
+      "sku": "SKU-DM-003",
+      "tags": ["Polo", "Knitted", "Luxury"],
+      "category": "Polo T-Shirts",
+      "subcategory": "Knitted Luxury",
+      "price": 6999,
+      "comparePrice": 8999,
+      "stock": 30,
+      "sizes": ["M", "L", "XL", "XXL", "3XL"],
+      "sizeChartId": "sc-polo",
+      "colors": ["Obsidian Black", "Crisp White"],
+      "colorVariants": [
+        { "color": "Obsidian Black", "colorHex": "#070707", "swatchImg": "assets/products/polo_tee_1.jpg", "images": ["assets/products/polo_tee_1.jpg", "assets/products/polo_tee_2.jpg"], "stock": 30, "sku": "SKU-DM-003-BLK", "price": 6999 },
+        { "color": "Crisp White", "colorHex": "#FFFFFF", "swatchImg": "assets/products/polo_tee_2.jpg", "images": ["assets/products/polo_tee_2.jpg", "assets/products/polo_tee_1.jpg"], "stock": 18, "sku": "SKU-DM-003-WHT", "price": 6999 }
+      ],
+      "fabric": "100% Mercerized Cotton Knit",
+      "gsm": "260 GSM Premium Knit",
+      "washCare": "Dry clean recommended or gentle hand wash cold.",
+      "rating": 5.0,
+      "reviewsCount": 34,
+      "badge": "NEW ARRIVAL",
+      "enabled": true,
+      "images": [
+        "assets/products/polo_tee_1.jpg",
+        "assets/products/polo_tee_2.jpg"
+      ],
+      "videoUrl": "",
+      "shortDescription": "Tailored luxury knitted polo with high-contrast lime tipping on collar and sleeves. Modern slim-regular fit.",
+      "longDescription": "<h3>TAILORED LUXURY KNIT</h3><p>Mercerized cotton knit polo with custom high-contrast lime tipping.</p>",
+      "seoTitle": "Doomna Obsidian Knitted Polo",
+      "seoDescription": "Luxury knitted polo shirt by Doomna.",
+      "seoKeywords": "Doomna, Polo, Knitted Polo"
+    },
+    {
+      "id": "doom-04",
+      "title": "Atelier Emblem White Polo",
+      "subtitle": "Crisp Architectural Pima Polo",
+      "brand": "Doomna",
+      "sku": "SKU-DM-004",
+      "tags": ["Polo", "White", "Emblem"],
+      "category": "Polo T-Shirts",
+      "subcategory": "Classic Luxe",
+      "price": 6499,
+      "comparePrice": 7999,
+      "stock": 18,
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "sizeChartId": "sc-polo",
+      "colors": ["Crisp White", "Matte Black"],
+      "colorVariants": [
+        { "color": "Crisp White", "colorHex": "#FFFFFF", "swatchImg": "assets/products/polo_tee_2.jpg", "images": ["assets/products/polo_tee_2.jpg", "assets/products/polo_tee_1.jpg"], "stock": 18, "sku": "SKU-DM-004-WHT", "price": 6499 }
+      ],
+      "fabric": "Pima Cotton Blend",
+      "gsm": "250 GSM Soft Touch",
+      "washCare": "Machine wash warm with like colors.",
+      "rating": 4.7,
+      "reviewsCount": 15,
+      "badge": "BESTSELLER",
+      "enabled": true,
+      "images": [
+        "assets/products/polo_tee_2.jpg",
+        "assets/products/polo_tee_1.jpg"
+      ],
+      "videoUrl": "",
+      "shortDescription": "Crisp architectural white polo shirt featuring subtle matte black hardware buttons and chest emblem.",
+      "longDescription": "<h3>CRISP ARCHITECTURAL POLO</h3><p>Premium Pima cotton blend featuring matte black hardware buttons.</p>",
+      "seoTitle": "Doomna White Polo Shirt",
+      "seoDescription": "Crisp white luxury polo shirt.",
+      "seoKeywords": "Doomna, White Polo"
+    },
+    {
+      "id": "doom-05",
+      "title": "Vanguard Track Co-ord Set",
+      "subtitle": "Two-Piece Oversized Shirt Jacket & Trousers",
+      "brand": "Doomna",
+      "sku": "SKU-DM-005",
+      "tags": ["Co-ord", "Tracksuit", "Streetwear"],
+      "category": "Co-ord Sets",
+      "subcategory": "Streetwear Sets",
+      "price": 12999,
+      "comparePrice": 16999,
+      "stock": 12,
+      "sizes": ["M", "L", "XL", "XXL"],
+      "sizeChartId": "sc-coord",
+      "colors": ["Stealth Black", "Lime Piping"],
+      "colorVariants": [
+        { "color": "Stealth Black", "colorHex": "#070707", "swatchImg": "assets/products/coord_set_1.jpg", "images": ["assets/products/coord_set_1.jpg", "assets/products/coord_set_2.jpg"], "stock": 12, "sku": "SKU-DM-005-BLK", "price": 12999 }
+      ],
+      "fabric": "Heavyweight Double Knit Cotton Blend",
+      "gsm": "350 GSM Fleece",
+      "washCare": "Machine wash cold inside out, tumble dry low.",
+      "rating": 4.9,
+      "reviewsCount": 42,
+      "badge": "EXCLUSIVE",
+      "enabled": true,
+      "images": [
+        "assets/products/coord_set_1.jpg",
+        "assets/products/coord_set_2.jpg"
+      ],
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "shortDescription": "Two-piece luxury high-street ensemble including oversized shirt jacket and matching relaxed cargo pants.",
+      "longDescription": "<h3>LUXURY STREETWEAR ENSEMBLE</h3><p>Two-piece co-ord set with 350GSM fleece and waterproof metallic hardware.</p>",
+      "seoTitle": "Doomna Vanguard Co-ord Set",
+      "seoDescription": "Luxury co-ord set for men by Doomna.",
+      "seoKeywords": "Doomna, Co-ord Set, Streetwear"
+    },
+    {
+      "id": "doom-06",
+      "title": "Monochrome Cyber Co-ord Set",
+      "subtitle": "Runway High-Contrast Piping Set",
+      "brand": "Doomna",
+      "sku": "SKU-DM-006",
+      "tags": ["Co-ord", "Runway", "Tailored"],
+      "category": "Co-ord Sets",
+      "subcategory": "Runway Collection",
+      "price": 14999,
+      "comparePrice": 18999,
+      "stock": 8,
+      "sizes": ["L", "XL", "XXL", "3XL"],
+      "sizeChartId": "sc-coord",
+      "colors": ["Monochrome Black & White", "Lime Accents"],
+      "colorVariants": [
+        { "color": "Monochrome Black & White", "colorHex": "#070707", "swatchImg": "assets/products/coord_set_2.jpg", "images": ["assets/products/coord_set_2.jpg", "assets/products/coord_set_1.jpg"], "stock": 8, "sku": "SKU-DM-006-MONO", "price": 14999 }
+      ],
+      "fabric": "Structured Poly-Cotton Twill",
+      "gsm": "320 GSM Heavy Twill",
+      "washCare": "Dry clean only.",
+      "rating": 4.9,
+      "reviewsCount": 31,
+      "badge": "LIMITED DROP",
+      "enabled": true,
+      "images": [
+        "assets/products/coord_set_2.jpg",
+        "assets/products/coord_set_1.jpg"
+      ],
+      "videoUrl": "",
+      "shortDescription": "Signature streetwear co-ord featuring lime neon piping accents, custom metallic zippers, and tailored trousers.",
+      "longDescription": "<h3>RUNWAY MONOCHROME CO-ORD</h3><p>Structured poly-cotton twill with high-contrast neon accents.</p>",
+      "seoTitle": "Doomna Monochrome Co-ord Set",
+      "seoDescription": "Runway edition co-ord set by Doomna.",
+      "seoKeywords": "Doomna, Cyber Co-ord Set"
+    }
+  ],
+  "settings": {
+    "siteName": "Doomna",
+    "currency": "₹",
+    "currencyCode": "INR",
+    "announcementBar": "⚡ FREE SHIPPING ACROSS INDIA • INCLUSIVE OF ALL TAXES • USE CODE DOOMNA10 FOR 10% OFF",
+    "heroTitle": "HIGH-STREET OPULENCE.",
+    "heroSubtitle": "Comfort Crafted For Timeless Luxury. Engineered with heavyweight 280GSM French Terry cotton and sleek architectural cuts.",
+    "heroBadgeText": "SS26 LIMITED DROP AVAILABLE NOW",
+    "heroImageUrl": "assets/hero-brand.jpg",
+    "heroLeftImg": "assets/products/oversized_tee_1.jpg",
+    "heroRightImg": "assets/products/coord_set_1.jpg",
+    "featuredProducts": {
+      "left": {
+        "productId": "doom-01",
+        "title": "Cybernetic Oversized Tee",
+        "tag": "NEW DROP",
+        "imageUrl": "assets/products/oversized_tee_1.jpg",
+        "enabled": true
+      },
+      "right": {
+        "productId": "doom-03",
+        "title": "Obsidian Jacquard Polo",
+        "tag": "EXCLUSIVE",
+        "imageUrl": "assets/products/polo_tee_1.jpg",
+        "enabled": true
+      }
+    },
+    "adminUser": {
+      "email": "Sales@doomna.in",
+      "passwordHash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+    },
+    "whatsappNumber": "+91 72062 21406",
+    "conciergeEmail": "Sales@doomna.in",
+    "phone": "+91 72062 21406",
+    "address": "Shakti Nagar, Sirsa, Haryana",
+    "footerTagline": "Comfort Crafted For Timeless Luxury",
+    "gstIncluded": true,
+    "freeShipping": true,
+    "enableWishlist": true,
+    "gstPercent": 12,
+    "shippingFee": 0,
+    "freeShippingThreshold": 0,
+    "razorpayKeyId": "rzp_test_DOOMNA2026KEY",
+    "razorpayKeySecret": "DOOMNA_SECRET_KEY_2026",
+    "phonepeMerchantId": "DOOMNAMERCHANT",
+    "upiId": "doomna@upi",
+    "enableRazorpay": true,
+    "enablePhonePe": true,
+    "enableCod": true
+  },
+  "pages": {
+    "aboutUs": "Doomna Atelier - High-street luxury apparel crafted in Shakti Nagar, Sirsa, Haryana.",
+    "privacyPolicy": "Your privacy is our priority at Doomna.",
+    "termsConditions": "Terms & Conditions for purchasing on Doomna.in.",
+    "shippingPolicy": "Free shipping across India on all orders.",
+    "returnPolicy": "7-day easy returns and exchanges."
+  },
+  "orders": [],
+  "coupons": [],
+  "customers": []
+}

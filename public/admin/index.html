@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doomna | Enterprise Admin Control Center</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- SECURE ADMIN LOGIN OVERLAY -->
+    <div class="admin-login-overlay" id="adminLoginModal">
+        <div class="admin-login-card">
+            <div class="brand-logo center">
+                <span class="logo-text">doomna ATELIER</span>
+            </div>
+            <h2>SECURE ADMIN LOGIN</h2>
+            <p>Authentication required to access management panel</p>
+
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label>Admin Email Address *</label>
+                    <input type="email" id="adminEmailInput" required placeholder="Sales@doomna.in" value="Sales@doomna.in">
+                </div>
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="adminPassInput" required placeholder="Enter admin password (default: admin123)">
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                    <a href="javascript:void(0)" id="btnForgotAdminPass" style="color:var(--accent-lime); font-size:0.8rem; text-decoration:underline;">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">AUTHENTICATE & LOG IN</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FORGOT PASSWORD OVERLAY -->
+    <div class="admin-modal-overlay" id="adminForgotModal">
+        <div class="admin-modal-container" style="max-width:450px;">
+            <div class="modal-header">
+                <h3>Forgot Admin Password</h3>
+                <button class="close-modal" onclick="closeAdminForgotModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="adminForgotForm" class="modal-form">
+                <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">Enter your admin email address. A password reset link and verification code will be dispatched to your concierge inbox.</p>
+                <div class="form-group">
+                    <label>Registered Admin Email *</label>
+                    <input type="email" id="forgotAdminEmail" required value="Sales@doomna.in">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">SEND RESET LINK</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CHANGE PASSWORD OVERLAY -->
+    <div class="admin-modal-overlay" id="adminChangePasswordModal">
+        <div class="admin-modal-container" style="max-width:480px;">
+            <div class="modal-header">
+                <h3>Change Admin Password</h3>
+                <button class="close-modal" onclick="closeAdminChangePassModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="adminChangePassForm" class="modal-form">
+                <div class="form-group">
+                    <label>Current Password *</label>
+                    <input type="password" id="changeCurrentPass" required placeholder="Current password">
+                </div>
+                <div class="form-group">
+                    <label>New Secure Password *</label>
+                    <input type="password" id="changeNewPass" required placeholder="New password (min 6 chars)">
+                </div>
+                <div class="form-group">
+                    <label>Confirm New Password *</label>
+                    <input type="password" id="changeConfirmPass" required placeholder="Confirm new password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">UPDATE PASSWORD</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN ADMIN LAYOUT -->
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../" target="_blank" class="brand-logo">
+                    <span class="logo-text">doomna</span>
+                    <span class="badge-admin">ADMIN</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-menu">
+                <button class="menu-item active" data-tab="tab-overview"><i class="fa-solid fa-chart-pie"></i> Analytics & Reports</button>
+                <button class="menu-item" data-tab="tab-products"><i class="fa-solid fa-shirt"></i> Product Catalog</button>
+                <button class="menu-item" data-tab="tab-sizes"><i class="fa-solid fa-ruler-combined"></i> Sizes & Size Charts</button>
+                <button class="menu-item" data-tab="tab-cms"><i class="fa-solid fa-sliders"></i> Banners & CMS</button>
+                <button class="menu-item" data-tab="tab-pages"><i class="fa-solid fa-file-contract"></i> Policy Pages</button>
+                <button class="menu-item" data-tab="tab-orders"><i class="fa-solid fa-boxes-packing"></i> Orders & GST</button>
+                <button class="menu-item" data-tab="tab-coupons"><i class="fa-solid fa-ticket"></i> Coupons & Promos</button>
+                <button class="menu-item" data-tab="tab-settings"><i class="fa-solid fa-gear"></i> Store & Tax Settings</button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="../" target="_blank" class="btn-view-store"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Storefront</a>
+                <button id="adminLogoutBtn" class="btn-logout"><i class="fa-solid fa-power-off"></i> Lock & Log Out</button>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <header class="top-bar">
+                <h1 id="pageTitle">Analytics & Revenue Reports</h1>
+                <div class="top-actions">
+                    <span class="live-status"><span class="green-dot"></span> Store Live (₹ INR)</span>
+                    <button class="btn btn-outline" id="btnOpenChangePassModal" onclick="openAdminChangePassModal()"><i class="fa-solid fa-key"></i> Change Password</button>
+                    <button class="btn btn-primary" id="btnQuickAddProduct"><i class="fa-solid fa-plus"></i> Add Product</button>
+                </div>
+            </header>
+
+            <!-- TAB 1: OVERVIEW & ADVANCED REPORTS -->
+            <section class="tab-content active" id="tab-overview">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon neon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div><span class="metric-label">Total Sales</span><h2 class="metric-val" id="statRevenue">₹0.00</h2></div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon neon"><i class="fa-solid fa-calendar-day"></i></div>
+                        <div><span class="metric-label">Today's Sales</span><h2 class="metric-val" id="statTodaySales">₹0.00</h2></div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <div><span class="metric-label">Total Orders</span><h2 class="metric-val" id="statOrders">0</h2></div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon neon"><i class="fa-solid fa-heart"></i></div>
+                        <div><span class="metric-label">Wishlisted Items</span><h2 class="metric-val" id="statWishlistCount">0</h2></div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon warning"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div><span class="metric-label">Low Stock Alert</span><h2 class="metric-val" id="statLowStock">0</h2></div>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>Revenue & Sales Trend (₹ INR)</h3>
+                    <div class="chart-box">
+                        <svg viewBox="0 0 500 150" class="svg-chart">
+                            <polyline fill="none" stroke="#CCFF00" stroke-width="4" points="0,120 100,90 200,105 300,40 400,60 500,20"/>
+                            <circle cx="500" cy="20" r="6" fill="#CCFF00"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: PRODUCTS MANAGER -->
+            <section class="tab-content" id="tab-products">
+                <div class="table-card">
+                    <div class="table-header flex-between">
+                        <div class="search-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="adminSearchProduct" placeholder="Search products...">
+                        </div>
+                        <div style="display:flex; gap:10px;">
+                            <button class="btn btn-outline" id="btnExportCatalog" onclick="exportCatalogCSV()"><i class="fa-solid fa-download"></i> Export CSV</button>
+                            <button class="btn btn-primary" id="btnAddProductModal"><i class="fa-solid fa-plus"></i> ADD NEW PRODUCT</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Images</th>
+                                    <th>Title / SKU</th>
+                                    <th>Category</th>
+                                    <th>Price (₹)</th>
+                                    <th>Stock</th>
+                                    <th>Available Sizes</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 8: SIZES & SIZE CHARTS MANAGEMENT -->
+            <section class="tab-content" id="tab-sizes">
+                <div class="coupons-grid" style="grid-template-columns: 1fr 2fr;">
+                    
+                    <div class="cms-card">
+                        <h3>Master Size List</h3>
+                        <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:14px;">Add, edit or delete sizes available across the store.</p>
+                        
+                        <div class="form-group" style="display:flex; gap:8px;">
+                            <input type="text" id="newMasterSizeInput" placeholder="e.g. 5XL" style="text-transform:uppercase;">
+                            <button class="btn btn-primary" onclick="addMasterSize()"><i class="fa-solid fa-plus"></i> ADD</button>
+                        </div>
+
+                        <div id="masterSizesPillContainer" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;"></div>
+                    </div>
+
+                    <div class="table-card">
+                        <div class="table-header flex-between">
+                            <h3>Editable Size Charts</h3>
+                            <button class="btn btn-primary" onclick="openCreateSizeChartModal()"><i class="fa-solid fa-plus"></i> CREATE NEW CHART</button>
+                        </div>
+
+                        <div id="sizeChartsListContainer"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: BANNERS, HERO & FEATURED PRODUCTS CMS -->
+            <section class="tab-content" id="tab-cms">
+                
+                <!-- HOMEPAGE FEATURED PRODUCTS SECTION -->
+                <div class="cms-card" style="margin-bottom: 24px;">
+                    <h3><i class="fa-solid fa-star neon-text"></i> Homepage Featured Products (Left & Right Cards)</h3>
+                    <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:16px;">Customize the left and right side cards beside the main Doomna logo on the homepage.</p>
+                    
+                    <div class="form-row" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+                        
+                        <!-- LEFT FEATURED CARD -->
+                        <div style="background:var(--bg-elevated); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-medium);">
+                            <h4 style="color:var(--accent-lime); margin-bottom:10px;">Left Side Featured Card</h4>
+                            
+                            <div class="form-group">
+                                <label>Select Linked Product *</label>
+                                <select id="cmsLeftProdSelect" onchange="autoFillLeftFeaturedProduct(this.value)"></select>
+                            </div>
+                            <div class="form-group"><label>Display Title</label><input type="text" id="cmsLeftTitle" placeholder="Cybernetic Oversized Tee"></div>
+                            <div class="form-group"><label>Badge Tag</label><input type="text" id="cmsLeftTag" placeholder="NEW DROP"></div>
+                            <div class="form-group"><label>Image URL</label><input type="text" id="cmsLeftImgUrl" placeholder="assets/products/oversized_tee_1.jpg"></div>
+                            <div class="form-group">
+                                <label>Visibility</label>
+                                <select id="cmsLeftEnabled">
+                                    <option value="true" selected>ON (Visible on Homepage)</option>
+                                    <option value="false">OFF (Hidden)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT FEATURED CARD -->
+                        <div style="background:var(--bg-elevated); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-medium);">
+                            <h4 style="color:var(--accent-lime); margin-bottom:10px;">Right Side Featured Card</h4>
+                            
+                            <div class="form-group">
+                                <label>Select Linked Product *</label>
+                                <select id="cmsRightProdSelect" onchange="autoFillRightFeaturedProduct(this.value)"></select>
+                            </div>
+                            <div class="form-group"><label>Display Title</label><input type="text" id="cmsRightTitle" placeholder="Obsidian Jacquard Polo"></div>
+                            <div class="form-group"><label>Badge Tag</label><input type="text" id="cmsRightTag" placeholder="EXCLUSIVE"></div>
+                            <div class="form-group"><label>Image URL</label><input type="text" id="cmsRightImgUrl" placeholder="assets/products/polo_tee_1.jpg"></div>
+                            <div class="form-group">
+                                <label>Visibility</label>
+                                <select id="cmsRightEnabled">
+                                    <option value="true" selected>ON (Visible on Homepage)</option>
+                                    <option value="false">OFF (Hidden)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <form id="cmsForm" class="cms-card">
+                    <h3>Edit Homepage Banners, Hero & Copy</h3>
+                    <div class="form-group"><label>Top Announcement Bar Text</label><input type="text" id="cmsAnnounce" required></div>
+                    <div class="form-group"><label>Hero Badge Tag</label><input type="text" id="cmsBadge" required></div>
+                    <div class="form-group"><label>Hero Main Title</label><input type="text" id="cmsTitle" required></div>
+                    <div class="form-group"><label>Hero Subtitle</label><textarea id="cmsSubtitle" rows="3" required></textarea></div>
+                    <button type="submit" class="btn btn-primary">SAVE ALL CMS & FEATURED PRODUCTS</button>
+                </form>
+            </section>
+
+            <!-- TAB 4: POLICY PAGES EDITOR -->
+            <section class="tab-content" id="tab-pages">
+                <form id="pagesForm" class="cms-card">
+                    <h3>Edit Policy Pages Content</h3>
+                    <div class="form-group"><label>About Us Story</label><textarea id="pageAbout" rows="3"></textarea></div>
+                    <div class="form-group"><label>Privacy Policy</label><textarea id="pagePrivacy" rows="3"></textarea></div>
+                    <div class="form-group"><label>Terms & Conditions</label><textarea id="pageTerms" rows="3"></textarea></div>
+                    <div class="form-group"><label>Shipping Policy</label><textarea id="pageShipping" rows="3"></textarea></div>
+                    <div class="form-group"><label>Return & Refund Policy</label><textarea id="pageReturn" rows="3"></textarea></div>
+                    <button type="submit" class="btn btn-primary">SAVE POLICY PAGES</button>
+                </form>
+            </section>
+
+            <!-- TAB 5: ORDERS & GST -->
+            <section class="tab-content" id="tab-orders">
+                <div class="table-card">
+                    <h3>Customer Orders & GST Invoices</h3>
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr><th>Order ID</th><th>Customer & Address</th><th>Items</th><th>Total (₹)</th><th>Payment</th><th>Status</th><th>Action</th></tr>
+                            </thead>
+                            <tbody id="ordersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 6: COUPONS -->
+            <section class="tab-content" id="tab-coupons">
+                <div class="coupons-grid">
+                    <form id="couponForm" class="cms-card">
+                        <h3>Create Coupon Code</h3>
+                        <div class="form-group"><label>Code</label><input type="text" id="couponCode" required placeholder="SUMMER20"></div>
+                        <div class="form-group"><label>Discount (%)</label><input type="number" id="couponPercent" required placeholder="20"></div>
+                        <div class="form-group"><label>Min Order (₹)</label><input type="number" id="couponMin" required placeholder="2999"></div>
+                        <button type="submit" class="btn btn-primary">CREATE COUPON</button>
+                    </form>
+
+                    <div class="table-card">
+                        <h3>Active Coupons</h3>
+                        <table class="admin-table">
+                            <thead><tr><th>Code</th><th>Discount</th><th>Min Order (₹)</th><th>Action</th></tr></thead>
+                            <tbody id="couponsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 7: STORE SETTINGS, WISHLIST, TAX & SHIPPING SETTINGS -->
+            <section class="tab-content" id="tab-settings">
+                <form id="settingsForm" class="cms-card">
+                    <h3>Store Contact, Wishlist, Tax & Shipping Settings</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group"><label>Location Address</label><input type="text" id="setAddress" value="Shakti Nagar, Sirsa, Haryana"></div>
+                        <div class="form-group"><label>Concierge Email</label><input type="email" id="setEmail" value="Sales@doomna.in"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Phone & WhatsApp Number</label><input type="text" id="setPhone" value="+91 72062 21406"></div>
+                        <div class="form-group"><label>Footer Tagline</label><input type="text" id="setFooterTagline" value="Comfort Crafted For Timeless Luxury"></div>
+                    </div>
+
+                    <h4 style="color:var(--accent-lime); margin: 20px 0 10px 0;">Customer Wishlist Settings</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Enable Customer Wishlist Feature</label>
+                            <select id="setEnableWishlist">
+                                <option value="true" selected>ON (Wishlist Enabled)</option>
+                                <option value="false">OFF (Wishlist Disabled)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h4 style="color:var(--accent-lime); margin: 20px 0 10px 0;">Inclusive GST & Shipping Settings</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>GST Included in Product Price</label>
+                            <select id="setGstIncluded">
+                                <option value="true" selected>ON (Included in Price)</option>
+                                <option value="false">OFF (Charged Separately)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Free Shipping Across India</label>
+                            <select id="setFreeShipping">
+                                <option value="true" selected>ON (Free Shipping)</option>
+                                <option value="false">OFF (Charge Shipping Fee)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group"><label>Shipping Charge (₹)</label><input type="number" id="setShipping" value="0"></div>
+                        <div class="form-group"><label>Minimum Order Value for Free Shipping (₹)</label><input type="number" id="setFreeThreshold" value="0"></div>
+                        <div class="form-group"><label>GST Tax Percentage (%)</label><input type="number" id="setGst" value="12"></div>
+                    </div>
+
+                    <h4 style="color:var(--accent-lime); margin: 20px 0 10px 0;">Razorpay & PhonePe Gateway Keys</h4>
+                    <div class="form-row">
+                        <div class="form-group"><label>Razorpay Key ID</label><input type="text" id="setRazorpayKeyId" value="rzp_test_DOOMNA2026KEY"></div>
+                        <div class="form-group"><label>Razorpay Key Secret</label><input type="password" id="setRazorpaySecret" value="DOOMNA_SECRET_KEY_2026"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>PhonePe Merchant ID</label><input type="text" id="setPhonePeMerchantId" value="DOOMNAMERCHANT"></div>
+                        <div class="form-group"><label>UPI VPA ID</label><input type="text" id="setUpiId" value="doomna@upi"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group"><label>Enable Razorpay</label><select id="setEnableRazorpay"><option value="true">YES (Enabled)</option><option value="false">NO (Disabled)</option></select></div>
+                        <div class="form-group"><label>Enable PhonePe</label><select id="setEnablePhonePe"><option value="true">YES (Enabled)</option><option value="false">NO (Disabled)</option></select></div>
+                        <div class="form-group"><label>Enable Cash on Delivery (COD)</label><select id="setEnableCod"><option value="true">YES (Enabled)</option><option value="false">NO (Disabled)</option></select></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">SAVE ALL STORE & TAX SETTINGS</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- PRODUCT EDIT MODAL -->
+    <div class="admin-modal-overlay" id="productModal">
+        <div class="admin-modal-container" style="max-width:850px;">
+            <div class="modal-header">
+                <h3 id="productModalTitle">Add New Product</h3>
+                <button class="close-modal" id="closeProductModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <form id="productForm" class="modal-form">
+                <input type="hidden" id="prodEditId">
+                <div class="form-row">
+                    <div class="form-group"><label>Product Title *</label><input type="text" id="prodTitle" required placeholder="Cybernetic Oversized Tee"></div>
+                    <div class="form-group"><label>Product Subtitle</label><input type="text" id="prodSubtitle" placeholder="Signature 280GSM Drop-Shoulder Streetwear"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group"><label>Brand Name</label><input type="text" id="prodBrand" value="Doomna"></div>
+                    <div class="form-group"><label>SKU Code</label><input type="text" id="prodSku" placeholder="SKU-DM-001"></div>
+                    <div class="form-group"><label>Tags (comma separated)</label><input type="text" id="prodTags" placeholder="Streetwear, Heavyweight, Neon"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="prodCategory" required>
+                            <option value="Oversized T-Shirts">Oversized T-Shirts</option>
+                            <option value="Polo T-Shirts">Polo T-Shirts</option>
+                            <option value="Co-ord Sets">Co-ord Sets</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Price (₹ INR) *</label><input type="number" id="prodPrice" required placeholder="4999"></div>
+                    <div class="form-group"><label>Compare Price (₹)</label><input type="number" id="prodComparePrice" placeholder="6999"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group"><label>Assigned Size Chart *</label><select id="prodSizeChart"></select></div>
+                    <div class="form-group"><label>Total Stock *</label><input type="number" id="prodStock" required min="0" placeholder="50"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Enable Available Product Sizes</label>
+                    <div id="prodSizesCheckboxContainer" style="display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;"></div>
+                </div>
+
+                <!-- COLOR VARIANTS MANAGER SECTION -->
+                <div style="background:var(--bg-elevated); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-medium); margin: 16px 0;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                        <h4 style="color:var(--accent-lime); margin:0;">Product Color Variants</h4>
+                        <button type="button" class="btn btn-outline" style="padding:4px 10px; font-size:0.75rem;" onclick="addAdminColorVariantRow()"><i class="fa-solid fa-plus"></i> Add Color Variant</button>
+                    </div>
+                    
+                    <table class="admin-table" id="variantsTable">
+                        <thead>
+                            <tr><th>Color Name</th><th>Hex Color</th><th>Swatch / Image URL</th><th>SKU</th><th>Stock</th><th>Action</th></tr>
+                        </thead>
+                        <tbody id="variantsTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group"><label>Fabric</label><input type="text" id="prodFabric" placeholder="100% French Terry Cotton"></div>
+                    <div class="form-group"><label>GSM</label><input type="text" id="prodGsm" placeholder="280 GSM Heavyweight"></div>
+                </div>
+
+                <div class="form-group"><label>Product Video URL (.mp4)</label><input type="text" id="prodVideoUrl" placeholder="https://domain.com/video.mp4"></div>
+
+                <div class="form-group">
+                    <label>Upload 5-6 Product Images</label>
+                    <input type="file" id="prodImageFiles" accept="image/*" multiple>
+                    <small>Or Image URLs (comma separated):</small>
+                    <input type="text" id="prodImageUrls" placeholder="assets/products/oversized_tee_1.jpg, assets/products/oversized_tee_2.jpg">
+                </div>
+
+                <div class="form-group"><label>Short Summary Description</label><textarea id="prodShortDesc" rows="2" placeholder="Brief 1-2 sentence product highlight..."></textarea></div>
+
+                <div class="form-group">
+                    <label>Rich Long-Form Product Description (Supports 5,000+ Words & HTML)</label>
+                    <textarea id="prodLongDesc" rows="8" placeholder="Full story, craft details, fit guide, wash rituals..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group"><label>SEO Meta Title</label><input type="text" id="prodSeoTitle" placeholder="Doomna Cybernetic Oversized Tee"></div>
+                    <div class="form-group"><label>SEO Meta Keywords</label><input type="text" id="prodSeoKeywords" placeholder="Doomna, Oversized T-Shirt, Streetwear"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">SAVE PRODUCT</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SIZE CHART EDITOR MODAL -->
+    <div class="admin-modal-overlay" id="sizeChartModal">
+        <div class="admin-modal-container" style="max-width:750px;">
+            <div class="modal-header">
+                <h3 id="sizeChartModalTitle">Edit Size Chart</h3>
+                <button class="close-modal" id="closeSizeChartModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <form id="sizeChartForm" class="modal-form">
+                <input type="hidden" id="chartEditId">
+                <div class="form-row">
+                    <div class="form-group"><label>Chart Title *</label><input type="text" id="chartTitle" required placeholder="Oversized Fit Size Chart"></div>
+                    <div class="form-group"><label>Target Category</label><input type="text" id="chartCategory" placeholder="Oversized T-Shirts"></div>
+                </div>
+
+                <h4 style="color:var(--accent-lime); margin:12px 0;">Measurement Rows</h4>
+                <table class="admin-table" id="chartRowsTable">
+                    <thead>
+                        <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th><th>Sleeve</th><th>Action</th></tr>
+                    </thead>
+                    <tbody id="chartRowsTableBody"></tbody>
+                </table>
+
+                <button type="button" class="btn btn-outline" style="margin-top:10px;" onclick="addSizeChartRow()"><i class="fa-solid fa-plus"></i> Add Measurement Row</button>
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px;">SAVE SIZE CHART</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="admin-toast-container" id="adminToastContainer"></div>
+    <script src="admin.js"></script>
+</body>
+</html>

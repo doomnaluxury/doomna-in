@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doomna | Comfort Crafted For Timeless Luxury</title>
+    <meta name="description" content="Doomna - High-street streetwear luxury apparel crafted in 280GSM heavyweight cotton. Location: Shakti Nagar, Sirsa, Haryana. Contact: Sales@doomna.in">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Razorpay Checkout SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+        <div class="announcement-content" id="announcementText">
+            <span>⚡ FREE SHIPPING ACROSS INDIA • INCLUSIVE OF ALL TAXES • USE CODE <strong class="neon-highlight">DOOMNA10</strong> FOR 10% OFF</span>
+        </div>
+    </div>
+
+    <!-- MAIN STICKY HEADER (BALANCED 3-COLUMN WITH CENTERED LOGO) -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            
+            <div class="header-left">
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <nav class="nav-links" id="navLinks">
+                    <a href="#home" class="nav-link active" onclick="showMainView()">Home</a>
+                    <a href="#shop" class="nav-link" onclick="showMainView()">Shop</a>
+                    <a href="#categories" class="nav-link" onclick="showMainView()">Categories</a>
+                    <a href="#about" class="nav-link" onclick="openPolicyPage('aboutUs')">About</a>
+                    <a href="#contact" class="nav-link" onclick="showMainView()">Contact</a>
+                    <a href="admin/" target="_blank" class="nav-link admin-nav-link"><i class="fa-solid fa-lock"></i> Admin</a>
+                </nav>
+            </div>
+
+            <div class="header-center">
+                <a href="#home" class="brand-logo" onclick="showMainView()">
+                    <img src="assets/hero-brand.jpg" alt="Doomna Logo" class="logo-icon" id="headerLogoImg">
+                    <span class="logo-text">doomna</span>
+                </a>
+            </div>
+
+            <div class="header-right">
+                <div class="lang-selector">
+                    <i class="fa-solid fa-globe"></i>
+                    <select id="langSelect" aria-label="Select Language">
+                        <option value="en">EN</option>
+                        <option value="hi">HI</option>
+                    </select>
+                </div>
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search..." aria-label="Search products">
+                    <button class="clear-search" id="clearSearch" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <button class="icon-btn" id="compareBtn" title="Compare Products" onclick="openCompareModal()">
+                    <i class="fa-solid fa-code-compare"></i>
+                    <span class="cart-badge" id="compareBadge">0</span>
+                </button>
+
+                <button class="icon-btn" id="wishlistBtn" title="Wishlist" onclick="openWishlistDrawer()">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="cart-badge" id="wishlistBadge">0</span>
+                </button>
+
+                <button class="icon-btn" id="userBtn" title="Customer Account" onclick="handleUserButtonClick()">
+                    <i class="fa-regular fa-user"></i>
+                    <span class="user-label" id="userLabel">Sign In</span>
+                </button>
+
+                <button class="icon-btn cart-btn" id="cartBtn" title="Shopping Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HOME VIEW CONTAINER -->
+    <div id="mainView">
+        <main>
+            <!-- HERO SECTION -->
+            <section class="hero-section" id="home">
+                <div class="hero-bg-overlay"></div>
+                <div class="hero-container">
+                    
+                    <div class="hero-side-card left-card">
+                        <div class="side-card-frame">
+                            <img src="assets/products/oversized_tee_1.jpg" alt="Featured Oversized Tee" id="heroLeftImg">
+                            <span class="side-card-tag">NEW DROP</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-content center-content">
+                        <div class="center-logo-wrap">
+                            <img src="assets/hero-brand.jpg" alt="Doomna Emblem Logo" class="hero-center-logo" id="heroCenterLogo">
+                            <h2 class="hero-brand-name">doomna</h2>
+                        </div>
+
+                        <div class="neon-pill-tag" id="heroBadge">
+                            <span class="pulse-dot"></span> SS26 LIMITED DROP AVAILABLE NOW
+                        </div>
+
+                        <h1 class="hero-title" id="heroTitle">
+                            HIGH-STREET <br>
+                            <span class="neon-text">OPULENCE.</span>
+                        </h1>
+
+                        <p class="hero-subtitle" id="heroSubtitle">
+                            Comfort Crafted For Timeless Luxury. Engineered with heavyweight 280GSM French Terry cotton and sleek architectural cuts.
+                        </p>
+
+                        <div class="hero-buttons">
+                            <a href="#shop" class="btn btn-primary">
+                                <span data-i18n="explore">EXPLORE COLLECTION</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="#categories" class="btn btn-outline">
+                                <span data-i18n="viewCategories">VIEW CATEGORIES</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-side-card right-card">
+                        <div class="side-card-frame">
+                            <img src="assets/products/coord_set_1.jpg" alt="Featured Co-ord Set" id="heroRightImg">
+                            <span class="side-card-tag">EXCLUSIVE</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CATEGORIES SHOWCASE -->
+            <section class="categories-section" id="categories">
+                <div class="section-container">
+                    <div class="section-header center">
+                        <span class="section-tag" data-i18n="curatedSelections">CURATED SELECTIONS</span>
+                        <h2 class="section-title" data-i18n="signatureCategories">SIGNATURE CATEGORIES</h2>
+                        <p class="section-subtitle">Designed for those who command distinction</p>
+                    </div>
+
+                    <div class="categories-grid">
+                        <div class="category-card" data-category="Oversized T-Shirts">
+                            <div class="category-img-wrap">
+                                <img src="assets/products/oversized_tee_1.jpg" alt="Oversized T-Shirts">
+                                <div class="category-overlay"></div>
+                            </div>
+                            <div class="category-info">
+                                <span class="cat-count">08 DESIGNS</span>
+                                <h3 class="cat-title">Oversized T-Shirts</h3>
+                                <p class="cat-desc">Heavyweight boxy fits with high-density silicone prints</p>
+                                <button class="cat-link-btn">Explore Category <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="category-card" data-category="Polo T-Shirts">
+                            <div class="category-img-wrap">
+                                <img src="assets/products/polo_tee_1.jpg" alt="Polo T-Shirts">
+                                <div class="category-overlay"></div>
+                            </div>
+                            <div class="category-info">
+                                <span class="cat-count">06 DESIGNS</span>
+                                <h3 class="cat-title">Polo T-Shirts</h3>
+                                <p class="cat-desc">Knitted jacquard trims & minimalist logo detailing</p>
+                                <button class="cat-link-btn">Explore Category <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="category-card" data-category="Co-ord Sets">
+                            <div class="category-img-wrap">
+                                <img src="assets/products/coord_set_1.jpg" alt="Co-ord Sets">
+                                <div class="category-overlay"></div>
+                            </div>
+                            <div class="category-info">
+                                <span class="cat-count">05 DESIGNS</span>
+                                <h3 class="cat-title">Co-ord Sets</h3>
+                                <p class="cat-desc">Monochrome luxury tailoring with contrast neon piping</p>
+                                <button class="cat-link-btn">Explore Category <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRODUCT CATALOG / SHOP SECTION -->
+            <section class="shop-section" id="shop">
+                <div class="section-container">
+                    <div class="section-header flex-header">
+                        <div>
+                            <span class="section-tag" data-i18n="catalog">DYNAMIC CATALOG</span>
+                            <h2 class="section-title" data-i18n="theDoomnaDrop">THE DOOMNA DROP</h2>
+                        </div>
+
+                        <div class="shop-controls">
+                            <div class="filter-tabs" id="filterTabs">
+                                <button class="tab-btn active" data-filter="all">All</button>
+                                <button class="tab-btn" data-filter="Oversized T-Shirts">Oversized T-Shirts</button>
+                                <button class="tab-btn" data-filter="Polo T-Shirts">Polo T-Shirts</button>
+                                <button class="tab-btn" data-filter="Co-ord Sets">Co-ord Sets</button>
+                            </div>
+
+                            <div class="sort-wrapper">
+                                <label for="sortSelect"><i class="fa-solid fa-sliders"></i> Sort:</label>
+                                <select id="sortSelect" aria-label="Sort products">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Customer Rating</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="products-grid" id="productsGrid"></div>
+
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your search or category filters.</p>
+                        <button class="btn btn-primary" id="resetFiltersBtn">RESET FILTERS</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REVIEWS SECTION -->
+            <section class="reviews-section">
+                <div class="section-container">
+                    <div class="section-header center">
+                        <span class="section-tag">TESTIMONIALS</span>
+                        <h2 class="section-title">CLIENT VERDICTS</h2>
+                    </div>
+
+                    <div class="reviews-grid">
+                        <div class="review-card">
+                            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="review-text">“The 280GSM heavyweight cotton draping is insane. Comfort Crafted For Timeless Luxury.”</p>
+                            <div class="reviewer">- Vikram S., Sirsa</div>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="review-text">“Lime neon detailing pops on black. Delivered in 2 days to Haryana.”</p>
+                            <div class="reviewer">- Aditya K., Haryana</div>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="review-text">“Co-ord set fit is 10/10. Waterproof zippers and tailored cuffs make it worth every rupee.”</p>
+                            <div class="reviewer">- Ananya M., Delhi</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT CONCIERGE -->
+            <section class="contact-section" id="contact">
+                <div class="section-container">
+                    <div class="section-header center">
+                        <span class="section-tag">VIP CONCIERGE</span>
+                        <h2 class="section-title">GET IN TOUCH</h2>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-form-wrap">
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label>Full Name *</label>
+                                    <input type="text" id="contactName" required placeholder="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address *</label>
+                                    <input type="email" id="contactEmail" required placeholder="Sales@doomna.in">
+                                </div>
+                                <div class="form-group">
+                                    <label>Message *</label>
+                                    <textarea id="contactMessage" rows="4" required placeholder="Write your query here..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">SEND MESSAGE</button>
+                            </form>
+                        </div>
+
+                        <div class="contact-info-wrap">
+                            <div class="info-card">
+                                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div><h4>ATELIER LOCATION</h4><p id="contactAddress">Shakti Nagar, Sirsa, Haryana</p></div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div><h4>CONCIERGE EMAIL</h4><p id="contactEmailDisplay">Sales@doomna.in</p></div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div><h4>PHONE & WHATSAPP</h4><p id="contactPhoneDisplay">+91 72062 21406</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- DEDICATED PRODUCT DETAILS PAGE VIEW WITH COLOR VARIANTS SWATCHES -->
+    <div id="productDetailView" style="display: none;">
+        <div class="section-container">
+            <button class="btn-back" onclick="showMainView()"><i class="fa-solid fa-arrow-left"></i> Back to Shop</button>
+
+            <div class="pdp-grid">
+                <div class="pdp-gallery-col">
+                    <div class="pdp-thumbnails-list" id="pdpThumbnailsList"></div>
+                    
+                    <div class="pdp-main-media-frame" id="pdpMainMediaFrame">
+                        <button class="pdp-arrow-btn prev-arrow" onclick="navigatePdpImage(-1)" aria-label="Previous Image"><i class="fa-solid fa-chevron-left"></i></button>
+                        <img id="pdpMainImage" src="" alt="Main Product View" class="zoomable-img">
+                        <video id="pdpMainVideo" controls style="display: none;" src=""></video>
+                        <button class="pdp-arrow-btn next-arrow" onclick="navigatePdpImage(1)" aria-label="Next Image"><i class="fa-solid fa-chevron-right"></i></button>
+                        
+                        <div class="zoom-hint" onclick="openPdpLightboxFromMain()"><i class="fa-solid fa-expand"></i> Fullscreen View</div>
+                    </div>
+                </div>
+
+                <div class="pdp-info-col">
+                    <div class="pdp-meta-tags">
+                        <span class="pdp-tag-pill" id="pdpBrand">Doomna</span>
+                        <span class="pdp-tag-pill" id="pdpSku">SKU-DM-001</span>
+                        <span class="pdp-tag-pill" id="pdpSubcategory">Graphic Streetwear</span>
+                    </div>
+
+                    <h1 class="pdp-title" id="pdpTitle">Product Title</h1>
+                    <p class="pdp-subtitle" id="pdpSubtitle">Signature 280GSM Drop-Shoulder Streetwear</p>
+
+                    <div class="pdp-rating-row">
+                        <div class="stars" id="pdpStars">★★★★★</div>
+                        <span id="pdpReviewsCount">(28 Verified Reviews)</span>
+                    </div>
+
+                    <div class="pdp-price-box">
+                        <span class="pdp-price neon-text" id="pdpPrice">₹4,999.00</span>
+                        <span class="pdp-compare-price" id="pdpComparePrice">₹6,999.00</span>
+                        <span class="pdp-discount-badge" id="pdpDiscountBadge">30% OFF</span>
+                    </div>
+
+                    <!-- COLOR VARIANTS SWATCHES SECTION (AMAZON / MYNTRA / AJIO STYLE) -->
+                    <div class="pdp-color-swatches-section" style="margin: 12px 0 16px 0;">
+                        <div style="font-size:0.85rem; font-weight:800; color:var(--text-secondary); margin-bottom:8px;">
+                            Color Variant: <strong id="pdpSelectedColorName" style="color:var(--text-white); margin-left:4px;">Obsidian Black</strong>
+                        </div>
+                        <div class="color-swatches-list" id="pdpColorSwatchesList"></div>
+                    </div>
+
+                    <!-- REQUIRED INCLUSIVE TAX & FREE SHIPPING BADGES -->
+                    <div class="tax-shipping-badges" style="margin: 0 0 16px 0; font-size: 0.85rem; color: var(--accent-lime); font-weight: 700; display: flex; flex-direction: column; gap: 4px;">
+                        <span><i class="fa-solid fa-circle-check"></i> Inclusive of all taxes.</span>
+                        <span><i class="fa-solid fa-truck-fast"></i> Free Shipping Across India.</span>
+                    </div>
+
+                    <p class="pdp-desc" id="pdpShortDescription">Short description...</p>
+
+                    <div class="specs-table">
+                        <div class="spec-row"><span>Fabric:</span><strong id="pdpFabric">100% French Terry Cotton</strong></div>
+                        <div class="spec-row"><span>GSM Weight:</span><strong id="pdpGsm">280 GSM Heavyweight</strong></div>
+                        <div class="spec-row"><span>Washing Instructions:</span><strong id="pdpWashCare">Machine wash cold inside out</strong></div>
+                        <div class="spec-row"><span>Available Colors:</span><strong id="pdpColors">Obsidian Black, Lime Neon</strong></div>
+                    </div>
+
+                    <div class="size-header-row">
+                        <span class="size-selector-label">Select Size:</span>
+                        <button class="btn-link" onclick="openSizeChartModal()"><i class="fa-solid fa-ruler-combined"></i> View Size Chart</button>
+                    </div>
+                    
+                    <!-- SIZE OPTIONS & SELECTED SIZE INDICATOR -->
+                    <div class="size-options" id="pdpSizeOptions"></div>
+                    <div id="pdpSelectedSizeDisplay" class="selected-size-indicator"></div>
+
+                    <div class="pdp-actions-row">
+                        <button class="btn btn-primary btn-pdp-add" id="pdpAddToCartBtn"><i class="fa-solid fa-bag-shopping"></i> ADD TO CART</button>
+                        <button class="btn btn-outline btn-pdp-buy" id="pdpBuyNowBtn"><i class="fa-solid fa-bolt"></i> BUY NOW</button>
+                        <button class="icon-btn-pdp" id="pdpWishlistBtn" title="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn-pdp" id="pdpCompareBtn" title="Compare"><i class="fa-solid fa-code-compare"></i></button>
+                    </div>
+
+                    <div class="share-box">
+                        <span>Share Product:</span>
+                        <button onclick="shareProduct('whatsapp')"><i class="fa-brands fa-whatsapp"></i></button>
+                        <button onclick="shareProduct('twitter')"><i class="fa-brands fa-x-twitter"></i></button>
+                        <button onclick="shareProduct('copy')"><i class="fa-solid fa-link"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdp-long-description-card">
+                <h3>PRODUCT STORY & ARCHITECTURAL CRAFTSMANSHIP</h3>
+                <div id="pdpLongDescription" class="prose-content"></div>
+            </div>
+
+            <div class="related-section">
+                <div class="section-header"><h2 class="section-title">RELATED & SIMILAR PRODUCTS</h2></div>
+                <div class="products-grid" id="relatedProductsGrid"></div>
+            </div>
+
+            <div class="recently-viewed-section">
+                <div class="section-header"><h2 class="section-title">RECENTLY VIEWED</h2></div>
+                <div class="products-grid" id="recentlyViewedGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN PRODUCT LIGHTBOX GALLERY MODAL -->
+    <div class="lightbox-overlay" id="pdpLightboxModal">
+        <button class="lightbox-close" onclick="closePdpLightbox()"><i class="fa-solid fa-xmark"></i></button>
+        <button class="lightbox-nav prev" onclick="navigatePdpLightbox(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="lightbox-nav next" onclick="navigatePdpLightbox(1)"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <div class="lightbox-container">
+            <div class="lightbox-media-wrap">
+                <img id="lightboxMainImage" src="" alt="Fullscreen Product Gallery">
+            </div>
+
+            <div class="lightbox-controls-bar">
+                <span class="lightbox-counter" id="lightboxCounter">1 / 5</span>
+                <div class="lightbox-zoom-btns">
+                    <button class="lb-btn" onclick="zoomPdpLightbox(1.25)" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button class="lb-btn" onclick="zoomPdpLightbox(0.8)" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    <button class="lb-btn" onclick="resetPdpLightboxZoom()" title="Reset Zoom"><i class="fa-solid fa-compress"></i></button>
+                </div>
+            </div>
+
+            <div class="lightbox-thumbs-strip" id="lightboxThumbsStrip"></div>
+        </div>
+    </div>
+
+    <!-- AUTHENTICATION MODAL -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-container" style="max-width: 440px;">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-user-shield neon-text"></i> CUSTOMER ACCESS</h2>
+                <button class="close-modal" onclick="document.getElementById('authModal').classList.remove('active')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="auth-tab-buttons">
+                <button class="auth-tab-btn active" id="btnTabLogin" onclick="switchAuthTab('login')">Sign In</button>
+                <button class="auth-tab-btn" id="btnTabRegister" onclick="switchAuthTab('register')">Create Account</button>
+            </div>
+
+            <form id="loginForm" class="auth-form-box">
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="loginEmail" required placeholder="Sales@doomna.in">
+                </div>
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:0.75rem;">
+                    <label><input type="checkbox" checked> Remember Me</label>
+                    <a href="#" style="color:var(--accent-lime);" onclick="switchAuthTab('forgot')">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">SIGN IN TO ACCOUNT</button>
+            </form>
+
+            <form id="registerForm" class="auth-form-box" style="display: none;">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="regName" required placeholder="Alex Vance">
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="regEmail" required placeholder="alex@doomna.in">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="regPhone" required placeholder="+91 72062 21406">
+                </div>
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="regPassword" required placeholder="Create strong password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">CREATE MY ACCOUNT</button>
+            </form>
+
+            <form id="forgotForm" class="auth-form-box" style="display: none;">
+                <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:16px;">Enter your email to receive a password reset verification link.</p>
+                <div class="form-group">
+                    <label>Registered Email *</label>
+                    <input type="email" id="forgotEmail" required placeholder="Sales@doomna.in">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">SEND RESET LINK</button>
+                <button type="button" class="btn btn-outline btn-block" style="margin-top:10px;" onclick="switchAuthTab('login')">Back to Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CUSTOMER ACCOUNT DASHBOARD MODAL -->
+    <div class="modal-overlay" id="accountModal">
+        <div class="modal-container" style="max-width: 800px;">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-id-card neon-text"></i> MY ACCOUNT DASHBOARD</h2>
+                <button class="close-modal" onclick="document.getElementById('accountModal').classList.remove('active')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="account-dashboard-grid" style="padding: 20px 0;">
+                <div class="account-sidebar">
+                    <button class="account-menu-btn active" onclick="switchAccountTab('profile', this)"><i class="fa-solid fa-user"></i> My Profile</button>
+                    <button class="account-menu-btn" onclick="switchAccountTab('orders', this)"><i class="fa-solid fa-box"></i> Order History</button>
+                    <button class="account-menu-btn" onclick="switchAccountTab('addresses', this)"><i class="fa-solid fa-location-dot"></i> Saved Addresses</button>
+                    <button class="account-menu-btn" style="color:#ff4d4d;" onclick="handleLogout()"><i class="fa-solid fa-power-off"></i> Logout</button>
+                </div>
+
+                <div class="account-content-pane">
+                    <div id="accTabProfile">
+                        <h3>Profile Details</h3>
+                        <p style="color:var(--text-secondary); margin-bottom:16px;">Manage your account details and password.</p>
+                        <div class="form-group"><label>Full Name</label><input type="text" id="accName"></div>
+                        <div class="form-group"><label>Email Address</label><input type="email" id="accEmail" readonly style="opacity:0.7;"></div>
+                        <div class="form-group"><label>Phone</label><input type="tel" id="accPhone"></div>
+                        <button class="btn btn-primary" onclick="saveUserProfile()">SAVE PROFILE CHANGES</button>
+                    </div>
+
+                    <div id="accTabOrders" style="display: none;">
+                        <h3>My Order History & GST Invoices</h3>
+                        <div class="table-responsive" style="margin-top:14px;">
+                            <table class="admin-table">
+                                <thead><tr><th>Order ID</th><th>Date</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+                                <tbody id="userOrdersTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="accTabAddresses" style="display: none;">
+                        <h3>Saved Shipping Addresses</h3>
+                        <div id="userAddressesList" style="margin-top:14px;"></div>
+                        <button class="btn btn-outline" style="margin-top:16px;" onclick="addNewAddressPrompt()"><i class="fa-solid fa-plus"></i> Add New Address</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAYMENT FAILED MODAL -->
+    <div class="modal-overlay" id="paymentFailedModal">
+        <div class="modal-container" style="max-width: 450px; text-align: center;">
+            <div style="color: #ff4d4d; font-size: 3rem; margin-bottom: 12px;"><i class="fa-solid fa-circle-xmark"></i></div>
+            <h2 style="color: #ff4d4d;">PAYMENT FAILED</h2>
+            <p style="color: var(--text-secondary); margin: 12px 0 24px 0;" id="paymentFailedReason">Your transaction could not be processed. Please check your payment details or try a different payment method.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="btn btn-primary btn-block" onclick="retryPayment()"><i class="fa-solid fa-rotate-right"></i> RETRY PAYMENT</button>
+                <button class="btn btn-outline btn-block" onclick="switchPaymentMethod()"><i class="fa-solid fa-wallet"></i> CHOOSE ANOTHER METHOD</button>
+                <button class="btn btn-outline btn-block" onclick="document.getElementById('paymentFailedModal').classList.remove('active'); openCartDrawer();">RETURN TO CART</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DYNAMIC SIZE CHART MODAL -->
+    <div class="modal-overlay" id="sizeChartModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-ruler-combined neon-text"></i> DOOMNA SIZE GUIDE</h2>
+                <button class="close-modal" onclick="document.getElementById('sizeChartModal').classList.remove('active')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div style="padding: 24px;" id="pdpSizeChartContainer"></div>
+        </div>
+    </div>
+
+    <!-- CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping neon-text"></i> YOUR CART (<span id="cartCountTitle">0</span>)</h3>
+            <button class="close-drawer" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="shipping-bar">
+            <p id="shippingBarText">🎉 <strong>FREE SHIPPING ACROSS INDIA ON ALL ORDERS!</strong></p>
+            <div class="progress-bg"><div class="progress-fill" id="shippingProgress" style="width: 100%;"></div></div>
+        </div>
+        <div class="cart-items" id="cartItemsContainer"></div>
+        <div class="cart-footer">
+            <div class="promo-box">
+                <input type="text" id="promoInput" placeholder="Promo code (e.g. DOOMNA10)">
+                <button id="applyPromoBtn">APPLY</button>
+            </div>
+            <div id="promoMessage" class="promo-msg"></div>
+            <div class="cart-summary-line"><span>Product Total</span><span id="cartSubtotal">₹0.00</span></div>
+            <div class="cart-summary-line discount-line" id="discountRow" style="display: none;"><span>Discount</span><span id="cartDiscount" class="neon-text">-₹0.00</span></div>
+            <div class="cart-summary-line"><span>Shipping</span><span id="cartShipping" class="neon-text">FREE</span></div>
+            <div class="cart-summary-line"><span>GST (12%)</span><span id="cartGstNote" style="color:var(--text-secondary);">Included</span></div>
+            <div class="cart-summary-line total-line"><span>Grand Total</span><span id="cartTotal" class="neon-text">₹0.00</span></div>
+            <button class="btn btn-primary btn-block checkout-btn" id="proceedCheckoutBtn">
+                <span>PROCEED TO CHECKOUT</span>
+                <i class="fa-solid fa-lock"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-container checkout-modal-container">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-shield-halved neon-text"></i> SECURE CHECKOUT (₹ INR)</h2>
+                <button class="close-modal" id="closeCheckoutBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="checkout-grid">
+                <form id="checkoutForm" class="checkout-form">
+                    <h3>1. Delivery Address</h3>
+                    <div class="form-row">
+                        <div class="form-group"><label>First Name *</label><input type="text" required id="chkFirstName" placeholder="Rohan"></div>
+                        <div class="form-group"><label>Last Name *</label><input type="text" required id="chkLastName" placeholder="Sharma"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Email *</label><input type="email" required id="chkEmail" placeholder="Sales@doomna.in"></div>
+                        <div class="form-group"><label>Phone *</label><input type="tel" required id="chkPhone" placeholder="+91 72062 21406"></div>
+                    </div>
+                    <div class="form-group"><label>Address *</label><input type="text" required id="chkAddress" placeholder="Shakti Nagar"></div>
+                    <div class="form-row">
+                        <div class="form-group"><label>City *</label><input type="text" required id="chkCity" placeholder="Sirsa"></div>
+                        <div class="form-group"><label>State / Pincode *</label><input type="text" required id="chkZip" placeholder="Haryana 125055"></div>
+                    </div>
+
+                    <h3>2. Choose Payment Method</h3>
+                    <div class="payment-options">
+                        <label class="payment-option active">
+                            <input type="radio" name="paymentMethod" value="razorpay" checked>
+                            <span class="pay-title"><i class="fa-solid fa-credit-card neon-text"></i> Razorpay (Cards / UPI / NetBanking)</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="phonepe">
+                            <span class="pay-title"><i class="fa-solid fa-mobile-screen"></i> PhonePe Gateway</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="cod">
+                            <span class="pay-title"><i class="fa-solid fa-hand-holding-dollar"></i> Cash on Delivery (COD)</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block checkout-submit-btn">
+                        <span>PAY & PLACE ORDER</span>
+                        <i class="fa-solid fa-check-double"></i>
+                    </button>
+                </form>
+
+                <div class="checkout-summary-pane">
+                    <h3>Order Summary</h3>
+                    <div class="checkout-items-list" id="checkoutItemsList"></div>
+                    <div class="checkout-totals">
+                        <div class="cart-summary-line"><span>Product Total</span><span id="chkSubtotal">₹0.00</span></div>
+                        <div class="cart-summary-line"><span>Shipping</span><span id="chkShipping" class="neon-text">FREE</span></div>
+                        <div class="cart-summary-line"><span>GST (12%)</span><span id="chkGst" style="color:var(--text-secondary);">Included</span></div>
+                        <div class="cart-summary-line total-line"><span>Grand Total</span><span id="chkTotal" class="neon-text">₹0.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONFIRMATION MODAL -->
+    <div class="modal-overlay" id="orderSuccessModal">
+        <div class="modal-container success-modal-container">
+            <div class="success-content center">
+                <div class="success-icon-wrap"><i class="fa-solid fa-circle-check neon-text"></i></div>
+                <h2>ORDER CONFIRMED!</h2>
+                <p>Thank you for choosing <strong>Doomna</strong>.</p>
+                <div class="order-receipt-box">
+                    <p>Order ID: <strong id="confirmedOrderId" class="neon-text">#DOOMNA-948201</strong></p>
+                    <p>Payment ID: <strong id="confirmedPaymentId" style="color:var(--text-white);">pay_rzp_982341029</strong></p>
+                    <p>Estimated Delivery: <strong>2-4 Business Days (Free Express Shipping)</strong></p>
+                    <p>Tracking AWB: <strong id="confirmedAwb">AWB982341029</strong></p>
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap:wrap;">
+                    <button class="btn btn-primary" onclick="printGstInvoice()"><i class="fa-solid fa-file-invoice"></i> Download GST Invoice</button>
+                    <button class="btn btn-outline" id="continueShoppingBtn">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPARE & WISHLIST MODALS -->
+    <div class="modal-overlay" id="compareModal">
+        <div class="modal-container" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-code-compare neon-text"></i> PRODUCT COMPARISON</h2>
+                <button class="close-modal" onclick="document.getElementById('compareModal').classList.remove('active')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="table-responsive" style="padding: 24px;" id="compareTableContainer"></div>
+        </div>
+    </div>
+
+    <div class="cart-drawer-overlay" id="wishlistOverlay"></div>
+    <aside class="cart-drawer" id="wishlistDrawer">
+        <div class="cart-header">
+            <h3><i class="fa-regular fa-heart neon-text"></i> YOUR WISHLIST</h3>
+            <button class="close-drawer" onclick="closeWishlistDrawer()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="wishlistItemsContainer"></div>
+    </aside>
+
+    <a href="https://wa.me/917206221406?text=Hi%20Doomna,%20I%20have%20a%20query" target="_blank" class="whatsapp-float" id="whatsappFloat" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="#home" class="brand-logo" onclick="showMainView()">
+                        <img src="assets/hero-brand.jpg" alt="Doomna Logo" class="logo-icon">
+                        <span class="logo-text">doomna</span>
+                    </a>
+                    <p class="footer-tagline">Comfort Crafted For Timeless Luxury</p>
+                    <p class="footer-desc" style="margin-top:8px;">Shakti Nagar, Sirsa, Haryana<br>Email: Sales@doomna.in | Phone: +91 72062 21406</p>
+                </div>
+                <div class="footer-col">
+                    <h4>COLLECTIONS</h4>
+                    <ul>
+                        <li><a href="#shop" onclick="filterCategory('Oversized T-Shirts')">Oversized T-Shirts</a></li>
+                        <li><a href="#shop" onclick="filterCategory('Polo T-Shirts')">Polo T-Shirts</a></li>
+                        <li><a href="#shop" onclick="filterCategory('Co-ord Sets')">Co-ord Sets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>CLIENT CARE & POLICIES</h4>
+                    <ul>
+                        <li><a href="#" onclick="openPolicyPage('shippingPolicy')">Shipping Policy</a></li>
+                        <li><a href="#" onclick="openPolicyPage('returnPolicy')">Return & Refund Policy</a></li>
+                        <li><a href="#" onclick="openPolicyPage('privacyPolicy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="openPolicyPage('termsConditions')">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DOOMNA ATELIER. ALL RIGHTS RESERVED.</p>
+                <div class="payment-badge-icons">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
