@@ -34,8 +34,8 @@
         { "size": "M", "chest": "40\"", "length": "27.5\"", "shoulder": "18.5\"", "sleeve": "8\"" },
         { "size": "L", "chest": "42\"", "length": "28.5\"", "shoulder": "19.5\"", "sleeve": "8.5\"" },
         { "size": "XL", "chest": "44\"", "length": "29.5\"", "shoulder": "20.5\"", "sleeve": "9\"" },
-        { "size": "XXL", "chest": "46\"", "length: "30.5\"", "shoulder": "21.5\"", "sleeve": "9.5\"" },
-        { "size": "3XL", "chest": "48\"", "length: "31.5\"", "shoulder": "22.5\"", "sleeve": "10\"" }
+        { "size": "XXL", "chest": "46\"", "length": "30.5\"", "shoulder": "21.5\"", "sleeve": "9.5\"" },
+        { "size": "3XL", "chest": "48\"", "length": "31.5\"", "shoulder": "22.5\"", "sleeve": "10\"" }
       ]
     },
     {
