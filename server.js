@@ -1,6 +1,6 @@
 /**
  * DOOMNA LUXURY - FULL-STACK EXPRESS REST API BACKEND
- * Features: ₹ INR Currency, Inclusive GST & Free Shipping Pricing Model,
+ * Features: â‚¹ INR Currency, Inclusive GST & Free Shipping Pricing Model,
  * Product Size Management System, Dynamic Size Charts, Razorpay & PhonePe Gateways
  */
 
@@ -155,6 +155,7 @@ app.post('/api/auth/register', (req, res) => {
     const { name, email, phone, password } = req.body;
     if (!email || !password) return res.status(400).json({ success: false, message: "Email and password required" });
 
+    db.customers = db.customers || [];
     const existing = db.customers.find(c => c.email.toLowerCase() === email.toLowerCase());
     if (existing) return res.status(400).json({ success: false, message: "Account already exists" });
 
@@ -172,7 +173,7 @@ app.post('/api/auth/login', (req, res) => {
     res.json({ success: true, user: { id: customer.id, name: customer.name, email: customer.email, phone: customer.phone, addresses: customer.addresses || [] } });
 });
 
-app.get('/api/products', (req, res) => res.json(readDB().products));
+app.get('/api/products', (req, res) => res.json(readDB().products || []));
 
 app.post('/api/products', upload.array('images', 10), (req, res) => {
     const db = readDB();
@@ -249,7 +250,7 @@ app.delete('/api/products/:id', (req, res) => {
     res.json({ success: true });
 });
 
-app.get('/api/settings', (req, res) => res.json(readDB().settings));
+app.get('/api/settings', (req, res) => res.json(readDB().settings || {}));
 app.put('/api/settings', (req, res) => {
     const db = readDB();
     db.settings = { ...db.settings, ...req.body };
@@ -257,7 +258,7 @@ app.put('/api/settings', (req, res) => {
     res.json({ success: true, settings: db.settings });
 });
 
-app.get('/api/pages', (req, res) => res.json(readDB().pages));
+app.get('/api/pages', (req, res) => res.json(readDB().pages || {}));
 app.put('/api/pages', (req, res) => {
     const db = readDB();
     db.pages = { ...db.pages, ...req.body };
@@ -265,7 +266,7 @@ app.put('/api/pages', (req, res) => {
     res.json({ success: true, pages: db.pages });
 });
 
-app.get('/api/orders', (req, res) => res.json(readDB().orders));
+app.get('/api/orders', (req, res) => res.json(readDB().orders || []));
 
 app.post('/api/orders', (req, res) => {
     const db = readDB();
@@ -337,8 +338,8 @@ app.put('/api/orders/:id/cancel', (req, res) => {
     res.json({ success: true, order });
 });
 
-app.get('/api/coupons', (req, res) => res.json(readDB().coupons));
-app.get('/api/customers', (req, res) => res.json(readDB().customers));
+app.get('/api/coupons', (req, res) => res.json(readDB().coupons || []));
+app.get('/api/customers', (req, res) => res.json(readDB().customers || []));
 
 app.get('/api/stats', (req, res) => {
     const db = readDB();
@@ -364,7 +365,7 @@ app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'adm
 
 app.listen(PORT, () => {
     console.log(`=================================================`);
-    console.log(`⚡ DOOMNA PRODUCTION SERVER RUNNING (${PORT})`);
+    console.log(`âš¡ DOOMNA PRODUCTION SERVER RUNNING (${PORT})`);
     console.log(`   Product Size Management & Size Charts Enabled`);
     console.log(`   Storefront: http://localhost:${PORT}`);
     console.log(`   Admin Panel: http://localhost:${PORT}/admin`);
