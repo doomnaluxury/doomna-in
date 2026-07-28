@@ -144,7 +144,7 @@ function setupAdminChangePass() {
         adminSettings.adminUser.passwordHash = newHash;
 
         if (isBackend) {
-            await fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(adminSettings) });
+            await fetch('/api/settings', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(adminSettings) });
         }
         syncAdminDataToLocal();
 
@@ -316,7 +316,7 @@ async function toggleProductEnabled(id) {
     p.enabled = !(p.enabled !== false);
 
     if (isBackend) {
-        await fetch('/api/products', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(p) });
+        await fetch('/api/products', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(p) });
     }
     syncAdminDataToLocal();
     renderAdminProductsTable();
@@ -334,7 +334,7 @@ async function duplicateProduct(id) {
     newProd.sku = (orig.sku || 'SKU-DM-000') + '-COPY';
 
     if (isBackend) {
-        await fetch('/api/products', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newProd) });
+        await fetch('/api/products', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newProd) });
     }
     adminProducts.push(newProd);
     syncAdminDataToLocal();
@@ -438,7 +438,7 @@ function setupCMSFormHandler() {
         adminSettings = updatedSettings;
 
         if (isBackend) {
-            await fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(adminSettings) });
+            await fetch('/api/settings', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(adminSettings) });
         }
         syncAdminDataToLocal();
 
@@ -579,7 +579,7 @@ document.getElementById('sizeChartForm').addEventListener('submit', async (e) =>
     else adminSizeCharts.push(chartObj);
 
     if (isBackend) {
-        await fetch('/api/size-charts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(chartObj) });
+        await fetch('/api/size-charts', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(chartObj) });
     }
     syncAdminDataToLocal();
 
@@ -740,7 +740,7 @@ async function handleSaveProduct(e) {
     };
 
     if (isBackend) {
-        await fetch('/api/products', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(prodObj) });
+        await fetch('/api/products', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(prodObj) });
     }
 
     const existingIdx = adminProducts.findIndex(p => p.id === id);
@@ -860,7 +860,7 @@ function setupSettingsFormHandler() {
         adminSettings = updatedSettings;
 
         if (isBackend) {
-            await fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(adminSettings) });
+            await fetch('/api/settings', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(adminSettings) });
         }
         syncAdminDataToLocal();
 
